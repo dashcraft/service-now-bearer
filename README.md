@@ -10,7 +10,9 @@ This is a `node module` that helps with issues getting a bearer token for oauth 
 ## Installation
 
 Install the node package with `npm install service-now-bearer`
+
 Include service-now-bearer in your route:
+
 ```
 import { SNBearer } from 'service-now-bearer';
 or
@@ -23,15 +25,17 @@ const SNBearer = require('service-now-bearer');
 
 You must pass a config object into SNBearer during module creation. The config object 
 must resemble the following:
+
 ```
  {
-    url: 'https://servicenow-instance.servicen-now.com',
+    url: 'https://servicenow-instance.service-now.com',
     client_id: 'client id from service now CORS application setup',
     client_secret: 'client secret from service now CORS Application setup'
  }
 ```
 
-Then you pass config into the service-now-bearer Constructor:
+Then you can pass the config into the service-now-bearer Constructor:
+
 ```
 import { SNBearer } from 'service-now-bearer';
 
