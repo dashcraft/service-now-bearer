@@ -1,7 +1,6 @@
 const request = require('request');
 
 
-
 class SNBearer {
   constructor(config) {
     this.config = config;
@@ -45,28 +44,30 @@ class SNBearer {
   }
 
   login(username, password) {
-    const options = {
-      method: 'POST',
-      url: `${this.config.url}/oauth_token.do`,
-      form: {
-        username: username,
-        password: password,
-        grant_type: 'password',
-        client_id: this.config.client_id,
-        client_secret: this.config.client_secret
-      }
-    };
+    return new Promise((resolve, reject) => {
+      const options = {
+        method: 'POST',
+        url: `${this.config.url}/oauth_token.do`,
+        form: {
+          username: username,
+          password: password,
+          grant_type: 'password',
+          client_id: this.config.client_id,
+          client_secret: this.config.client_secret
+        }
+      };
 
-    request(options, (error, response, body) => {
-      if (error) return new Error(error);
-      let access_token = JSON.parse(body);
-      if (!access_token.access_token) {
-        console.log(access_token);
-        return new Error('Service now did not return an Auth Token');
-      }
-      access_token.date_requested = new Date();
-      return access_token;
-    });
+      request(options, (error, response, body) => {
+        if (error) reject(new Error(error));
+        let access_token = JSON.parse(body);
+        if (!access_token.access_token) {
+          console.log(access_token);
+          return new Error('Service now did not return an Auth Token');
+        }
+        access_token.date_requested = new Date();
+        resolve(access_token);
+      });
+    })
   }
 
 }
