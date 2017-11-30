@@ -54,6 +54,8 @@ First Install Jest
 `npm install -g jest`
 
 Second run tests or watch tests
-`jest --watchAll`
+`jest --watchAll` 
+or
+`npm test`
 
 All tests are located inside of the tests folder
