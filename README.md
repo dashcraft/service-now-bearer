@@ -9,8 +9,8 @@ This is a `node module` that helps with issues getting a bearer token for oauth 
 
 ## Installation
 
-Install the node package with `npm install SNBearer`
-Include SNBearer in your route:
+Install the node package with `npm install service-now-bearer`
+Include service-now-bearer in your route:
 ```
 import { SNBearer } from 'service-now-bearer';
 or
@@ -31,9 +31,9 @@ must resemble the following:
  }
 ```
 
-Then you pass config into the SNBearer Constructor:
+Then you pass config into the service-now-bearer Constructor:
 ```
-import { SNBearer } from 'SNBearer';
+import { SNBearer } from 'service-now-bearer';
 
 let config = { ... };
 
