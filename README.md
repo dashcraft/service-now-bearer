@@ -12,9 +12,9 @@ This is a `node module` that helps with issues getting a bearer token for oauth 
 Install the node package with `npm install SNBearer`
 Include SNBearer in your route:
 ```
-import { SNBearer } from 'SNBearer';
+import { SNBearer } from 'service-now-bearer';
 or
-const SNBearer = require('SNBearer');
+const SNBearer = require('service-now-bearer');
 ```
 
 ## How To Use
