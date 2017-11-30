@@ -45,3 +45,15 @@ let snb = new SNBearer(config);
 
 * Login `SNBearer.login(username, password)` returns a promise that resolves to an access_token object
 * Refresh `SNBearer.refresh(refresh_token)` returns a promise that resolves to a new access_token object
+
+## Testing
+
+You can run tests by using `jest`
+
+First Install Jest
+`npm install -g jest`
+
+Second run tests or watch tests
+`jest --watchAll`
+
+All tests are located inside of the tests folder
