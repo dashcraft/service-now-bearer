@@ -1,12 +1,23 @@
 const request = require('request');
 
 
-export class SNBearer {
+
+class SNBearer {
   constructor(config) {
-    //config contains the url, client id and client secret
-    if (!this.config.url) new Error('The url was not defined!');
-    if (!this.config.client_id) new Error('The service now client id was not defined!')
-    if (!this.config.client_secret) new Error('The service now client secret was not defined!')
+    this.config = config;
+
+    if (this.config) {
+      //config contains the url, client id and client secret
+      if (!this.config.url) throw new Error('The url was not defined!');
+      if (!this.config.client_id) throw new Error('The service now client id was not defined!')
+      if (!this.config.client_secret) throw new Error('The service now client secret was not defined!')
+    } else {
+      throw new Error('The config object was not defined!');
+    }
+  }
+
+  returnInstantiatedValues() {
+    return Object.assign({}, this.config);
   }
 
   refresh(refresh_token) {
@@ -59,3 +70,5 @@ export class SNBearer {
   }
 
 }
+
+module.exports = SNBearer;

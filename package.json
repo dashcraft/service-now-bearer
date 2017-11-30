@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "This is a node module that uses the servicenow api to get a bearer token to authorize client side requests.",
   "main": "index.js",
+  "jest ": {
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/nock"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -23,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/dashcraft/service-now-bearer/issues"
   },
-  "homepage": "https://github.com/dashcraft/service-now-bearer#readme"
+  "homepage": "https://github.com/dashcraft/service-now-bearer#readme",
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "nock": "^9.1.3"
+  }
 }
