@@ -15,10 +15,6 @@ class SNBearer {
     }
   }
 
-  returnInstantiatedValues() {
-    return Object.assign({}, this.config);
-  }
-
   refresh(refresh_token) {
     const options = {
       method: 'POST',
@@ -35,7 +31,6 @@ class SNBearer {
       if (error) return new Error(error);
       let access_token = JSON.parse(body);
       if (access_token.error) {
-        console.log(access_token);
         return new Error('The refresh token was not refreshed!');
       }
       access_token.date_requested = new Date();
@@ -61,7 +56,6 @@ class SNBearer {
         if (error) reject(new Error(error));
         let access_token = JSON.parse(body);
         if (!access_token.access_token) {
-          console.log(access_token);
           return new Error('Service now did not return an Auth Token');
         }
         access_token.date_requested = new Date();
