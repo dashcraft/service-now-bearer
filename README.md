@@ -43,5 +43,5 @@ let snb = new SNBearer(config);
 
 ### API
 
-* Login `SNBearer.login(username, password)` returns an access_token object
-* Refresh `SNBearer.refresh(refresh_token)` returns a new access_token object
+* Login `SNBearer.login(username, password)` returns a promise that resolves to an access_token object
+* Refresh `SNBearer.refresh(refresh_token)` returns a promise that resolves to a new access_token object
