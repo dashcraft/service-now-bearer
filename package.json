@@ -1,6 +1,6 @@
 {
   "name": "service-now-bearer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is a node module that uses the servicenow api to get a bearer token to authorize client side requests.",
   "main": "index.js",
   "jest ": {
