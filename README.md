@@ -21,7 +21,7 @@ const SNBearer = require('service-now-bearer');
 
 ## How To Use
 
-### Instatiation
+### Instantiation
 
 You must pass a config object into SNBearer during module creation. The config object 
 must resemble the following:
