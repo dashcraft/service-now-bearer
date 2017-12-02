@@ -14,7 +14,7 @@ Install the node package with `npm install service-now-bearer`
 Include service-now-bearer in your route:
 
 ```
-import { SNBearer } from 'service-now-bearer';
+import * as SNBearer from 'service-now-bearer';
 or
 const SNBearer = require('service-now-bearer');
 ```
@@ -37,7 +37,7 @@ must resemble the following:
 Then you can pass the config into the service-now-bearer Constructor:
 
 ```
-import { SNBearer } from 'service-now-bearer';
+import * as from 'service-now-bearer';
 
 let config = { ... };
 
