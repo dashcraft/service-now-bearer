@@ -16,26 +16,29 @@ class SNBearer {
   }
 
   refresh(refresh_token) {
-    const options = {
-      method: 'POST',
-      url: `${this.config.url}/oauth_token.do`,
-      form: {
-        grant_type: 'refresh_token',
-        refresh_token: refresh_token,
-        client_id: this.config.client_id,
-        client_secret: this.config.client_secret
-      }
-    };
+    return new Promise((resolve, reject) => {
+      const options = {
+        method: 'POST',
+        url: `${this.config.url}/oauth_token.do`,
+        form: {
+          grant_type: 'refresh_token',
+          refresh_token: refresh_token,
+          client_id: this.config.client_id,
+          client_secret: this.config.client_secret
+        }
+      };
 
-    request(options, function (error, response, body) {
-      if (error) return new Error(error);
-      let access_token = JSON.parse(body);
-      if (access_token.error) {
-        return new Error('The refresh token was not refreshed!');
-      }
-      access_token.date_requested = new Date();
-      return access_token;
-    });
+      request(options, function (error, response, body) {
+        if (error) reject(new Error(error));
+        let access_token = JSON.parse(body);
+        if (access_token.error) {
+          reject(new Error('The refresh token was not refreshed!'));
+        }
+        access_token.date_requested = new Date();
+        resolve(access_token);
+      });
+
+    })
   }
 
   login(username, password) {
@@ -56,7 +59,7 @@ class SNBearer {
         if (error) reject(new Error(error));
         let access_token = JSON.parse(body);
         if (!access_token.access_token) {
-          return new Error('Service now did not return an Auth Token');
+          reject(new Error('Service now did not return an Auth Token'));
         }
         access_token.date_requested = new Date();
         resolve(access_token);
