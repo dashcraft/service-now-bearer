@@ -1,6 +1,5 @@
 const request = require('request');
 
-
 class SNBearer {
   constructor(config) {
     this.config = config;
@@ -29,7 +28,7 @@ class SNBearer {
       };
 
       request(options, function (error, response, body) {
-        if (error) reject(new Error(error));
+        if (error) reject(new Error({Error: error}));
         let access_token = JSON.parse(body);
         if (access_token.error) {
           reject(new Error('The refresh token was not refreshed!'));
@@ -54,10 +53,12 @@ class SNBearer {
           client_secret: this.config.client_secret
         }
       };
-
       request(options, (error, response, body) => {
         if (error) reject(new Error(error));
         let access_token = JSON.parse(body);
+        if(access_token.error_description){
+          reject(new Error('Username or Password was incorrect!'));
+        }
         if (!access_token.access_token) {
           reject(new Error('Service now did not return an Auth Token'));
         }
